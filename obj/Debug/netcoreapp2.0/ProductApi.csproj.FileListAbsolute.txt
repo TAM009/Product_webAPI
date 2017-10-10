@@ -1,0 +1,10 @@
+c:\Users\Administrator\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.deps.json
+c:\Users\Administrator\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.runtimeconfig.json
+c:\Users\Administrator\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.runtimeconfig.dev.json
+c:\Users\Administrator\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.dll
+c:\Users\Administrator\ProductApi\bin\Debug\netcoreapp2.0\ProductApi.pdb
+c:\Users\Administrator\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.csproj.CoreCompileInputs.cache
+c:\Users\Administrator\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.AssemblyInfoInputs.cache
+c:\Users\Administrator\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.AssemblyInfo.cs
+c:\Users\Administrator\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.dll
+c:\Users\Administrator\ProductApi\obj\Debug\netcoreapp2.0\ProductApi.pdb
