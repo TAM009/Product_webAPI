@@ -1,65 +1,29 @@
-using ProductApi.Models;
-using GroupService;
-using Microsoft.EntityFrameworkCore;//To integrate database with webapi
 using System;
+using ProductApi.Models;
+using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks; //For using task and asynchronous feature in webapi
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
-namespace ProductApi.Controllers
+namespace GroupService
 {
-    [Route("api/[controller]")]
-    public class ProductGroupController:Controller
+    public class GroupMethods:IProductGroupService
     {
         private readonly ProductContext _context;
 
-        private IProductGroupService _service;
-
-        public ProductGroupController(ProductContext context,IProductGroupService service)
+        public GroupMethods(ProductContext context)
         {
             _context=context;
-            _service=service;
         }
+
 
         [HttpGet]
-        public Task<List<ProductGroup>> Get()
-        {
-            return _service.Get();
-        }
-
-        [HttpGet("{id}", Name = "GetProductGroup")]
-        public Task<List<ProductGroup>> GetById(int id)
-        {
-            return _service.GetById(id);
-        }
-
-        [HttpPost] //Post method
-        public Task Create([FromBody] ProductGroup item)
-        {
-            return _service.Create(item);
-        }
-
-        [HttpPut("{id}")] //Update method
-        public Task Update(int id, [FromBody] ProductGroup item)
-        {
-            return _service.Update(id,item);
-        }
-
-        [HttpDelete("{id}")] //Delete Method
-        public Task Delete(int id)
-        {
-            return _service.Delete(id);
-        }       
-
-
-        /*[HttpGet]
         public async Task<List<ProductGroup>> Get()
         {
             return await _context.ProductGroupTable.ToListAsync();
         }
-        
-        
 
         [HttpGet("{id}", Name = "GetProductGroup")]
         public async Task<List<ProductGroup>> GetById(int id)
@@ -77,10 +41,7 @@ namespace ProductApi.Controllers
                 throw new Exception( ex.Message);
             }
             return productGroup;
-        }
-
-       
-
+        }  
 
         [HttpPost] //Post method
         public async Task Create([FromBody] ProductGroup item)
@@ -94,10 +55,7 @@ namespace ProductApi.Controllers
             {
                 throw new Exception(ex.Message);
             }
-        }
-
-        
-        
+        }  
 
 
         [HttpPut("{id}")] //Update method
@@ -121,8 +79,6 @@ namespace ProductApi.Controllers
 
         }
 
-        
-
         [HttpDelete("{id}")] //Delete Method
         public async Task Delete(int id)
         {
@@ -137,7 +93,7 @@ namespace ProductApi.Controllers
                 throw new Exception(ex.Message);
             }
             
-        }*/
+        }
 
     }
 }

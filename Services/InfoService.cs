@@ -1,77 +1,25 @@
-using ProductApi.Models;
-using InfoService;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using ProductApi.Models;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Net.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
-
-namespace ProductApi.Controllers
+namespace InfoService
 {
-    [Route("api/[controller]")]
-    public class ProductInfoController:Controller //4.Using the infoservice defined in startup in the controller.
+    public class InfoMethods:IProductInfoService //2.Defining method of the connected interface.
+
     {
-        private readonly ProductContext _context;
+        public readonly ProductContext _context;
 
-        private IProductInfoService _service;
-
-        public ProductInfoController(ProductContext context,IProductInfoService service)
+        public InfoMethods(ProductContext context)
         {
             _context=context;
-            _service=service;
         }
-
+        
         [HttpGet]
-        public Task<List<ProductInfo>> GetAll()
-        {
-            return _service.GetAll();
-        }
-
-        [HttpGet("{id}", Name = "GetProductInfo")]
-        public Task<List<ProductInfo>> GetUsingId(int id)
-        {
-            return _service.GetUsingId(id);
-        }
-
-        [HttpPost] //Post method
-        public Task Create([FromBody] ProductInfo item)
-        {
-            return _service.Create(item);
-        }
-
-        [HttpPut("{id}")] //Update method
-        public Task Update(int id, [FromBody] ProductInfo item)
-        {
-            return _service.Update(id,item);
-        }
-
-        [HttpDelete("{id}")] //Delete Method
-        public Task Delete(int id)
-        {
-            return _service.Delete(id);
-        }
-
-        public bool IsAlphaName(ProductInfo item)
-        {
-            return _service.IsAlphaName(item);
-        }
-
-        public bool IsNumericRate(ProductInfo item)
-        {
-            return _service.IsNumericRate(item);
-        }
-
-        public bool IsNumericGroupID(ProductInfo item)
-        {
-            return _service.IsNumericGroupID(item);
-        }
-
-
-        /*[HttpGet]
         public async Task<List<ProductInfo>> GetAll()
         {
             return await _context.ProductInfoTable.ToListAsync();
@@ -250,8 +198,6 @@ namespace ProductApi.Controllers
             {
                 throw new Exception(ex.Message);
             }
-        }*/
-
-
+        }
     }
 }

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using ProductApi.Models;
+using InfoService;
+using GroupService;
 
 namespace ProductApi
 {
@@ -25,6 +27,8 @@ namespace ProductApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IProductGroupService,GroupMethods>();//3.Connecting the interface and class implementation to be used as a service.
+            services.AddTransient<IProductInfoService,InfoMethods>();
             services.AddMvc();
             services.AddDbContext<ProductContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
         }
